@@ -52,13 +52,13 @@ Save the file and exit back to the Terminal prompt.
 Install the repository security key by running the commands: 
 
 ```bash
-$ gpg  --keyserver keyserver.ubuntu.com  --recv-keys 34EC655A 
+$ gpg  --keyserver keyserver.ubuntu.com  --recv-keys DBCA24B8A9B913B9 
 ```
 
 Sometimes you need to exit terminal here, so I recommend that you will just do it  and open Terminal again. Now run the command: 
 
 ```bash
-$ gpg -a  --export 34EC655A | sudo apt-key add - 
+$ gpg -a  --export DBCA24B8A9B913B9 | sudo apt-key add - 
 ```
 
 You must see an Exit message: OK. If not you need to investigate why not.
