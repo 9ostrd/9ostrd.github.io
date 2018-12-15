@@ -194,7 +194,7 @@ You have to logout/login to get group addition happens.
 
 # Resource
 
-[vm disk & references .pdf](https://drive.google.com/drive/folders/1x7D6xcOGzuz6l7oxJls_ic70ukUGfdGl?usp=sharing)
+1. [vm disk & references .pdf](https://drive.google.com/drive/folders/1x7D6xcOGzuz6l7oxJls_ic70ukUGfdGl?usp=sharing)
 
 # References
 
