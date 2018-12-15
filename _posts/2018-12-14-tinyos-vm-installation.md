@@ -89,7 +89,7 @@ $ sudo apt-get install msp430-46 nesc tinyos-tools
 Working in your home directory, run in Terminal: 
 
 ```bash
-$ wget http://github.com/tinyos/tinyos6release/archive/tinyos62_1_2.tar.gz
+$ wget http://github.com/tinyos/tinyos-release/archive/tinyos-2_1_2.tar.gz
 ```
 
 unzip the file and move it to a more suitable location (here we just rename it  because we want to be able to have all read/write to the source code): 
@@ -109,6 +109,8 @@ export TOSDIR="$TOSROOT/tos"
 export CLASSPATH=$CLASSPATH:$TOSROOT/support/sdk/java
 export MAKERULES="$TOSROOT/support/make/Makerules"
 export PYTHONPATH=$PYTHONPATH:$TOSROOT/support/sdk/python
+
+echo "setting up TinyOS on source path $TOSROOT"
 ```
 
 You have to logout/login
