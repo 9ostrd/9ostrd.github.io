@@ -44,7 +44,7 @@ go to the end of the file and add the following:
 
 ```bash
 deb http://tinyprod.net/repos/debian wheezy main
-deb http://tinyprod.net/repos/debian msp430646 main
+deb http://tinyprod.net/repos/debian msp430-46 main
 ```
 
 Save the file and exit back to the Terminal prompt.
