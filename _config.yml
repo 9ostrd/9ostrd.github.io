@@ -3,9 +3,9 @@
 # Site wide configuration
 ####################################
 #
-title: Leonids
-email:
-description: A simple and awesome blog theme powered by jekyll.
+title: 9ostrd
+email: y.sasiwat@gmail.com
+description: A simple and awesome blog
 url: # the base hostname & protocol for your site
 keywords: ["blog", "jekyll"]
 
@@ -14,7 +14,7 @@ keywords: ["blog", "jekyll"]
 # Jekyll configuration
 ####################################
 #
-timezone:          Europe/Paris
+timezone:          Asia/Bangkok
 markdown:          kramdown
 highlighter:       rouge
 excerpt_separator: <!--more-->
@@ -33,10 +33,10 @@ kramdown:
 ####################################
 #
 owner:
-  name: Leonids
+  name: 9ostrd
   avatar: 2825311.png
-  job: "A jekyll theme"
-  bio: "A simple and awesome blog theme powered by jekyll."
+  job: "A student"
+  bio: "A simple and awesome blog"
   email:
   disqus-shortname:
   twitter: #username
