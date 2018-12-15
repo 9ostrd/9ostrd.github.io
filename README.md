@@ -1,72 +1,71 @@
-## My Stack Problems
+# Update 07/09/2018
 
-> This project forked and has been modified from [A simple grey theme for Jekyll](https://github.com/liamsymonds/simplygrey-jekyll),
-> and the search posts using [Super Search](https://github.com/chinchang/super-search)
+I'm planning to refactor Leonids theme!!!
 
-### Demo
-* [https://agusmakmun.github.io](https://agusmakmun.github.io)
+The goal is really simple: make documentation more intuitive and deployment simpler!!!
 
-#### Features
+Here is the plan:
 
-* Sitemap and XML Feed
-* Pagination in homepage
-* Posts under category
-* Realtime Search Posts _(title & description)_ by query.
-* Related Posts
-* Highlight pre
-* Next & Previous Post
-* Disqus comment
-* Projects page & Detail Project page
-* Share on social media
-* Google analytics
-* HTML Minify _(Compress HTML)_ using [Jekyll Compress HTML](https://github.com/penibelst/jekyll-compress-html)
+| Version | Description | Date |
+| --- | --- | --- |
+| 1.1 | Jekyll version deployable with gem | 07/15/2018 |
+| 1.2 | New features: Pagination, Prev/Next post | 07/22/2018 |
+| 2.0 | Gatsby or Vuepress version (vote in Issues) | who knows... |
 
-#### Screenshot
+As the project was and will be designed to improve your writing experience, only documentation, gem, deployment process with CI relevant PRs are acceptable in the future.
 
-![Screenshot Post Page](https://raw.githubusercontent.com/agusmakmun/agusmakmun.github.io/master/static/img/screenshot-post-page.png  "Screenshot Post Page")
+I want you to know how much I value your support.
 
-### Install & Configuration
+Share it to your timeline!
 
-1. Fork this repository
-2. Edit site settings inside file of `_config.yml`
-3. Edit your projects at file of `projects.md`, `_data/projects.json` and inside path of `_project/` _(for detail project)_.
-4. Edit about yourself inside file of `about.md`
+# Update 05/06/2016
 
-### How to Use?
+Important! It's better to download the gzipped files instead of forking the repo. I would really appreciate if you could give me a star. 😁
 
-**a. Add new Category**
+This project is under MIT license, so feel free to make it your own.
 
-All categories saved inside path of `category/`, you can see the existed categories.
+# Leonids Jekyll Themes
 
-**b. Add new Posts**
+**[Leonids](http://renyuanz.github.io/leonids)** is a clean Jekyll theme perfect for powering your GitHub hosted blog.
 
-* All posts bassed on markdown syntax _(please googling)_. allowed extensions is `*.markdown` or `*.md`.
-* This files can found at the path of `_posts/`.
-* and the name of files are following `<date:%Y-%m-%d>-<slug>.<extension>`, for example:
+## What is Leonids?
+
+* Responsive templates. Looking good on mobile, tablet, and desktop.
+* Simple and clear permalink structure.
+* Support for Disqus Comments.
+* Support for multi-authors.
+* **And** the Leonids (/ˈliːənɪdz/ lee-ə-nidz) are a prolific meteor shower associated with the comet [Tempel-Tuttle](https://en.wikipedia.org/wiki/55P/Tempel%E2%80%93Tuttle).
+
+See a [demo](http://renyuanz.github.io/leonids/) hosted on GitHub.
+
+## Quick setup
 
 ```
-2013-09-23-welcome-to-jekyll.md
-
-# or
-
-2013-09-23-welcome-to-jekyll.markdown
+git clone https://github.com/renyuanz/leonids
+cd leonids
+jekyll server
 ```
 
-Inside the file of it,
+Check out your awesome blog at `http://localhost:4000` and Cheers!
+
+## Running with Docker
 
 ```
----
-layout: post                          # (require) default post layout
-title: "Your Title"                   # (require) a string title
-date: 2016-04-20 19:51:02 +0700       # (require) a post date
-categories: [python, django]          # (custom) some categories, but makesure these categories already exists inside path of `category/`
-tags: [foo, bar]                      # (custom) tags only for meta `property="article:tag"`
-image: Broadcast_Mail.png             # (custom) image only for meta `property="og:image"`, save your image inside path of `static/img/_posts`
----
-
-# your content post with markdown syntax goes here...
+docker run --rm -it --volume=$PWD:/srv/jekyll -p 4000:4000 jekyll/jekyll:pages jekyll serve --watch --force_polling
 ```
 
-### Contributing
+## Resume Page by [@Skn0tt](https://github.com/Skn0tt)
+Leonids features a simple resume page. It is divided up into five sections:
 
-Feel free to [open a bug](https://github.com/agusmakmun/agusmakmun.github.io/issues) or [contribute to code](https://github.com/agusmakmun/agusmakmun.github.io/pulls)!
+* Bio (Edit \_data/index/careers.yml)
+* Education (Edit \_data/index/education.yml)
+* Skills (Edit \_data/index/skills.yml)
+* Projects (Edit \_data/index/projects.yml)
+* About (Edit \_includes/sections/about.html)
+
+You can put all your info into these files, and they will be featured on the resume page.
+
+## TODO
+
+- [ ] Redesign categories page. Ref: [dribbble: blog category section By Ilja Miskov](https://dribbble.com/shots/2274792-Blog-Category-Selection)
+- [ ] Multi languages support.
