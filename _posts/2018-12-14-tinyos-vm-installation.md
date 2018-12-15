@@ -34,10 +34,10 @@ A command summary of vim is available here and in many other places:  <http://ww
 
 # Install TinyOS compilers for various uProcessors
 
-We will edit <strong>/etc/apt/sources.list.d/tinyprodAdebian.list</strong> and add two  repositories location. These repositories contain the compilers we need. Using vim:
+We will edit <strong>/etc/apt/sources.list.d/tinyprod-debian.list</strong> and add two  repositories location. These repositories contain the compilers we need. Using vim:
 
 ```bash
-$ sudo vim /etc/apt/sources.list.d/tinyprod6debian.list
+$ sudo vim /etc/apt/sources.list.d/tinyprod-debian.list
 ```
 
 go to the end of the file and add the following: 
