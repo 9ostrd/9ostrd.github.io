@@ -4,7 +4,7 @@
 ####################################
 #
 title: 9ostrd
-email: y.sasiwat@gmail.com
+email:
 description: my simple blogs.
 url: # the base hostname & protocol for your site
 keywords: ["blog", "jekyll"]
@@ -37,7 +37,7 @@ owner:
   avatar: 2825311.png
   job: "a student"
   bio: "my simple blogs"
-  email: y.sasiwat@gmail.com
+  email:
   disqus-shortname:
   twitter: #username
   facebook: #username
