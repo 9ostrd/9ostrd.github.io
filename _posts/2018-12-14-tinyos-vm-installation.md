@@ -144,6 +144,12 @@ Note: due to the recent integration with TinyOS core at trunk, the scripts "mote
 $ whereis motelist motelist-z1
 ```
 
+In order to program motes you will need to access the serial ports. Joining the group  that grants this privilege can grant you this access. The Linux command gpasswd  administer the /etc/group file and dialout is the group that owns the serial ports,  so the following command will add you to this group. Run: 
+ 
+sudo gpasswd -a <your-user> dialout 
+ 
+This change only takes effect when log out from Ubuntu and log in again. 
+
 # Compiling the first TinyOS Program
 
 To check if the installation succeeded we have to open a new terminal and execute the following commands:
