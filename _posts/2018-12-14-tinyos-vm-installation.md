@@ -106,7 +106,7 @@ You will need to add some environment variables to your shell. The following are
 ```bash
 export TOSROOT="$HOME/tinyos-main"
 export TOSDIR="$TOSROOT/tos"
-export CLASSPATH=$CLASSPATH:$TOSROOT/support/sdk/java
+export CLASSPATH=$CLASSPATH:$TOSROOT/support/sdk/java/tinyos.jar
 export MAKERULES="$TOSROOT/support/make/Makerules"
 export PYTHONPATH=$PYTHONPATH:$TOSROOT/support/sdk/python
 
