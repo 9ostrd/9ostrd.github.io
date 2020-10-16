@@ -5,94 +5,76 @@ excerpt: ""
 categories: [installation]
 comments: true
 ---
-
-This article has re-created an instruction to run TinyOS on currently Linux OS. I was tested with Ubuntu Desktop 14.04.5 (It's possible to use on Ubuntu 16.XX if all of the packages was supported)(I was tested on lasted Ubuntu version, but still not working) 32 bit on VirtualBox version 5.2.22 r126460 (Qt5.6.3).
-
-I skip an installation of Ubuntu on VirtualBox. You can find the installation on the internet and do it by youself. I'll give only an important informations that uesed in this article.
+This article has re-created an instruction to install TinyOS on currently Linux OS. The Linux that tested is Ubuntu Desktop 14.04 or Ubuntu 16.04 64 bit on VirtualBox version 5.2.22 r126460 (Qt5.6.3).
 
 # VM specifications
 
-Type: Linux 32 bit
+Type: Linux 64 bit
 
-Version: Ubuntu 
+Version: Ubuntu (14.04 or 16.04)
 
-Set the Memory & size to 1024 MB (1 GB)
+Set the Memory & size to 2048 MB (2 GB)
 
-Dynamically allocated 10 GB
+Dynamically allocated 20 GB
 
 # Get prerequisites software
 
-We will be installing vim, an editor that is a bit more intuitive than the default vi  that comes with Linux. Open a Terminal window and type the following command  (not need to change directory) from the default one you start in.
+Vim is an editor that a bit more intuitive than the default Linux editor like vi. Open a Terminal window and type the following command.
 
 ```bash
 $ sudo apt-get install vim
 ```
 
-Make sure that the installation completed without any warnings. This is true for  anything else we do here. 
- 
-A command summary of vim is available here and in many other places:  <http://www.fprintf.net/vimCheatSheet.html>
+Make sure that the installation completed without any warnings. A command summary of vim is available here and in many other places:  <http://www.fprintf.net/vimCheatSheet.html>
 
-# Install TinyOS compilers for various uProcessors
+# Install TinyOS compilers for various processors
 
-We will edit <strong>/etc/apt/sources.list.d/tinyprod-debian.list</strong> and add two  repositories location. These repositories contain the compilers we need. Using vim:
+Update the <strong>/etc/apt/sources.list.d/tinyprod-debian.list</strong> file and add two repositories location at the end of file. These repositories contain the compilers need. Using vim:
 
 ```bash
 $ sudo vim /etc/apt/sources.list.d/tinyprod-debian.list
 ```
 
-go to the end of the file and add the following: 
+Add two repositories location at the end of files: 
 
 ```bash
 deb http://tinyprod.net/repos/debian wheezy main
 deb http://tinyprod.net/repos/debian msp430-46 main
 ```
 
-Save the file and exit back to the Terminal prompt.
-
-Install the repository security key by running the commands: 
+Save the file and exit back to the prompt. then update package dependencies.
 
 ```bash
-$ gpg  --keyserver keyserver.ubuntu.com  --recv-keys DBCA24B8A9B913B9 
+sudo apt-get update
 ```
 
-Sometimes you need to exit terminal here, so I recommend that you will just do it  and open Terminal again. Now run the command: 
-
-```bash
-$ gpg -a  --export DBCA24B8A9B913B9 | sudo apt-key add - 
-```
-
-You must see an Exit message: OK. If not you need to investigate why not.
- 
-Exit the terminal again and start a new one to make the key take affect. 
- 
-Now we can install the packages. In Terminal we run: 
-
-```bash
-$ sudo apt-get update
-```
-
-In this state, If you found an Errors of gpg-keys. You need to set a gpg-keys with a new keys that system report as follows:
+In this process, the error of a repository security key will appear. So, the repository security key needs to install on the system by following commands: 
 
 ```bash
 $ gpg  --keyserver keyserver.ubuntu.com  --recv-keys <new key>
 $ gpg -a  --export <new key> | sudo apt-key add - 
 ```
 
+After the installation, package dependencies should update without any warning or error.
+
+```bash
+$ sudo apt-get update
+```
 then,
 
 ```bash
-$ sudo apt-get install msp430-46 nesc tinyos-tools
+$ sudo apt-get install git msp430-46 nesc tinyos-tools
 ```
 
 # Get TinyOS
 
-Working in your home directory, run in Terminal: 
+Working on home directory, download TinyOS: 
 
 ```bash
 $ wget http://github.com/tinyos/tinyos-release/archive/tinyos-2_1_2.tar.gz
 ```
 
-unzip the file and move it to a more suitable location (here we just rename it  because we want to be able to have all read/write to the source code): 
+unzip the file and rename the directory to "tinyos-main": 
 
 ```bash
 $ tar xf tinyos-2_1_2.tar.gz
@@ -101,7 +83,7 @@ $ mv tinyos-release-tinyos-2_1_2 tinyos-main
 
 # Setup TinyOS dev. environment
 
-You will need to add some environment variables to your shell. The following are  the necessary ones. Using <strong>vim</strong> edit <strong>.bashrc</strong> and add the following lines at the end of  the file:
+Add environment variables to the terminal. Using <strong>vim</strong> edit <strong>.bashrc</strong> and add the following lines at the end of the file:
 
 ```bash
 export TOSROOT="$HOME/tinyos-main"
@@ -113,17 +95,21 @@ export PYTHONPATH=$PYTHONPATH:$TOSROOT/support/sdk/python
 echo "setting up TinyOS on source path $TOSROOT"
 ```
 
-You have to logout/login
+Instantly, update the terminal configuration:
+
+```bash
+source .bashrc
+```
 
 # Test the installation
 
-Start by testing the environment by running: 
+Testing the environment: 
  
 ```bash
 $ tos-check-env 
 ```
 
-If you did everything properly you will see only one WARNING about graphviz not  being version 1.10 (it will appear twice). This is actually OK because you will have a  newer version (likely 2.x). To check run: 
+If everything properly, there are only warning about Graphviz shows on the terminal. Because it not being version 1.10 (Maybe the warning appear twice): 
  
 ```bash
 $ dot –V 
@@ -144,13 +130,13 @@ Note: due to the recent integration with TinyOS core at trunk, the scripts "mote
 $ whereis motelist motelist-z1
 ```
 
-In order to program motes you will need to access the serial ports. Joining the group  that grants this privilege can grant you this access. The Linux command gpasswd  administer the /etc/group file and dialout is the group that owns the serial ports,  so the following command will add you to this group. Run: 
+In order to program motes you will need to access the serial ports. Joining the group that grants this privilege can grant you this access. The Linux command gpasswd administer the /etc/group file and dialout is the group that owns the serial ports,  so the following command will add you to this group. Run: 
 
 ```bash
 $ sudo gpasswd -a <your-user> dialout 
 ```
 
-This change only takes effect when log out from Ubuntu and log in again. 
+This change only takes effect when logout from Ubuntu and login again. 
 
 # Compiling the first TinyOS Program
 
@@ -186,13 +172,13 @@ $ cd $TOSROOT/apps/Blink
 $ make z1 install
 ```
 
-If you've programmed successfully the Z1 you should see the leds blinking
+If you've programmed successfully the Z1 you should see the LEDs blinking
 
 # Known Issues
 
 ## Permission denied errors
 
-It may not be possible to compile programs with non privileged users. To solve this issue there are 2 easy solutions:
+It may not be possible to compile programs with non-privileged users. To solve this issue there are 2 easy solutions:
 
 ```bash
 $ sudo usermod -a -G tty yourname
@@ -200,15 +186,11 @@ $ sudo usermod -a -G tty yourname
 
 You have to logout/login to get group addition happens.
 
-# Resource
-
-1. [vm disk & references .pdf](https://drive.google.com/drive/folders/1x7D6xcOGzuz6l7oxJls_ic70ukUGfdGl?usp=sharing)
-
 # References
 
 1. [Tinyos on recent version of ubuntu](https://askubuntu.com/questions/483916/installing-tinyos-on-recent-version-of-ubuntu/483956#483956)
 2. [Errors of packages 'nesc', 'tinyos-tools' and 'msp430-46'](https://github.com/tinyos/tinyos-main/issues/308)
-3. [Troubles installing TinyOs on ubuntu karmic](http://mail.millennium.berkeley.edu/pipermail/tinyos-help/2010-April/045890.html)
+3. [Troubles installing TinyOS on ubuntu karmic](http://mail.millennium.berkeley.edu/pipermail/tinyos-help/2010-April/045890.html)
 4. [Cannot open /dev/ttyUSB0: Permission denied](https://github.com/esp8266/source-code-examples/issues/26)
 5. [Automatic installation](http://tinyos.stanford.edu/tinyos-wiki/index.php/Automatic_installation)
 6. [Installing TinyOS](http://tinyos.stanford.edu/tinyos-wiki/index.php/Installing_TinyOS)
